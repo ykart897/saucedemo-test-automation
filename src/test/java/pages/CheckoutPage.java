@@ -32,9 +32,9 @@ public class CheckoutPage extends BasePage {
     private WebElement errorMessage;
 
     public void enterCheckoutInformation(String firstName, String lastName, String postalCode) {
-        type(firstNameInput, firstName);
-        type(lastNameInput, lastName);
-        type(postalCodeInput, postalCode);
+        setInputValue(firstNameInput, firstName);
+        setInputValue(lastNameInput, lastName);
+        setInputValue(postalCodeInput, postalCode);
     }
 
     public void clickContinue() {

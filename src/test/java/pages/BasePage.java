@@ -42,6 +42,19 @@ public class BasePage {
         element.sendKeys(text);
     }
 
+    protected void setInputValue(WebElement element, String text) {
+        WebElement visibleElement = wait.until(ExpectedConditions.visibilityOf(element));
+        ((JavascriptExecutor) driver).executeScript(
+                "const element = arguments[0];"
+                        + "const value = arguments[1];"
+                        + "const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;"
+                        + "setter.call(element, value);"
+                        + "element.dispatchEvent(new Event('input', {bubbles: true}));"
+                        + "element.dispatchEvent(new Event('change', {bubbles: true}));",
+                visibleElement,
+                text);
+        wait.until(driver -> text.equals(element.getDomProperty("value")));
+    }
     protected String getText(WebElement element) {
         return wait.until(ExpectedConditions.visibilityOf(element)).getText();
     }
