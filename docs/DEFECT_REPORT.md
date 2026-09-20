@@ -12,7 +12,7 @@ Project: SauceDemo Test Automation
 | DEF-004 | Configuration loading depended on the Maven working directory | Medium | Closed | `config.properties` is loaded from the test classpath and required values are validated |
 | DEF-005 | Native WebDriver clicks were intermittent in headless Chrome, especially on Linux CI | High | Closed | Clickable waits are followed by a centered scroll and DOM click; checkout completion also verifies the resulting URL |
 | DEF-006 | Maven emitted an invalid encoding configuration warning and had no SLF4J provider | Low | Closed | UTF-8 is passed through Surefire `argLine` and a compatible test logger is configured |
-| DEF-007 | Local Firefox execution is unavailable because Firefox is not installed | Low | Open | Firefox remains covered by the GitHub Actions browser matrix |
+| DEF-007 | Local Firefox execution is unavailable because Firefox is not installed | Low | Closed | The full Firefox suite passed in GitHub Actions |
 | DEF-008 | Selenium 4.18.1 reported a CDP-version warning with local Chrome 153 | Low | Closed | Selenium was upgraded to 4.49.0; the warning no longer appears |
 
 ## Verification evidence
@@ -23,6 +23,6 @@ Project: SauceDemo Test Automation
 - Immediate repeat Chrome regression run: 13 passed, 0 failed, 0 skipped.
 - Failure-path execution confirmed screenshot attachment and browser cleanup behavior.
 
-## Remaining action
+## CI verification
 
-The Firefox matrix job must pass in GitHub Actions after the repository is published. A failure caused by SauceDemo availability or browser infrastructure should be distinguished from a product or test defect.
+The published GitHub Actions matrix passed on Chrome and Firefox. Both jobs uploaded their Cucumber and Surefire report artifacts.

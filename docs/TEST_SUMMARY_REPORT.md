@@ -33,7 +33,7 @@ A focused checkout run also passed all three checkout scenarios after the intera
 |---|---|---|
 | Windows 11, Java 17, Chrome 153, headless | Verified | Two full local runs passed |
 | Local Firefox | Not executed | Firefox is not installed locally |
-| GitHub Actions, Chrome and Firefox | Configured | Final status is recorded by the published workflow |
+| GitHub Actions, Chrome and Firefox | Passed | Both matrix jobs passed and uploaded reports |
 
 ## Reports
 
@@ -44,4 +44,4 @@ A focused checkout run also passed all three checkout scenarios after the intera
 
 ## Conclusion
 
-The current automation covers the critical flows available in SauceDemo and is stable on the verified Chrome environment. Firefox remains the only pending execution environment and is handled by the CI matrix.
+The current automation covers the critical flows available in SauceDemo and is stable on the verified Chrome environment. Chrome and Firefox both pass in the published CI matrix; no execution environment remains pending.
