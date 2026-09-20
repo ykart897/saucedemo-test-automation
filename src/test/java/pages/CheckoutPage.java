@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,8 +42,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public void clickFinish() {
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(finishButton));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
+        click(finishButton);
         wait.until(ExpectedConditions.urlContains("checkout-complete"));
     }
 
