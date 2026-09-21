@@ -33,6 +33,10 @@ public class BasePage {
 
     protected void click(WebElement element) {
         WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        if (Boolean.getBoolean("dom.click.fallback")) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", clickableElement);
+            return;
+        }
         if ("a".equalsIgnoreCase(clickableElement.getTagName())) {
             clickableElement.click();
             return;
