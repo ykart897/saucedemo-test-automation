@@ -33,7 +33,7 @@ public class BasePage {
     protected void click(WebElement element) {
         WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", clickableElement);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", clickableElement);
+        clickableElement.click();
     }
 
     protected void type(WebElement element, String text) {
