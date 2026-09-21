@@ -57,6 +57,7 @@ jobs:
           mvn --batch-mode --no-transfer-progress clean test
           -Dheadless=true
           -Dbrowser=${{ matrix.browser }}
+          -Ddom.click.fallback=${{ matrix.browser == 'chrome' }}
           -Dchrome.binary="${{ steps.setup-chrome.outputs.chrome-path }}"
           -Dwebdriver.chrome.driver="${{ steps.setup-chrome.outputs.chromedriver-path }}"
 
