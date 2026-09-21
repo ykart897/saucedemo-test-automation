@@ -7,18 +7,23 @@ BDD-style UI test automation for the [SauceDemo](https://www.saucedemo.com/) e-c
 ![Selenium](https://img.shields.io/badge/Selenium-4.49-43B02A?logo=selenium&logoColor=white)
 ![Cucumber](https://img.shields.io/badge/Cucumber-BDD-23D96C?logo=cucumber&logoColor=white)
 
-![Cucumber report showing the successful 13-scenario regression suite](docs/assets/cucumber-report.png)
-
 ## Why this project matters
 
 A UI test suite is useful only when failures are trustworthy and reproducible. This project demonstrates more than happy-path browser scripts:
 
 - Cross-browser execution on Chrome and Firefox through a GitHub Actions matrix.
 - Explicit waits and centralized browser lifecycle management to reduce flaky behavior.
-- Reliable React input synchronization in headless browser environments.
+- Native WebDriver clicks so overlays and other user-visible interaction problems remain detectable.
+- Reliable React input synchronization in headless browser environments where direct value entry is required.
 - Failure screenshots embedded directly into Cucumber reports.
 - Traceability from documented requirements to executable Gherkin scenarios.
 - Downloadable HTML, JSON, and Surefire reports for every CI run.
+
+## What I implemented
+
+I built the test suite around Cucumber scenarios, Page Objects, centralized WebDriver lifecycle management, and reusable assertions. The suite covers authentication, inventory, sorting, cart, and checkout behavior across Chrome and Firefox. I also added failure screenshots, traceability documents, downloadable CI artifacts, React-compatible input synchronization, native WebDriver clicks, and checks that sorting preserves the complete product inventory.
+
+The intent is not merely to show green tests: the assertions are designed to catch user-visible interaction failures and data loss during UI operations.
 
 ## Quality snapshot
 
@@ -54,7 +59,7 @@ The feature files describe user behavior, step definitions express assertions, a
 | --- | --- |
 | Authentication | Valid login, wrong password, empty username |
 | Product catalog | Inventory visibility and minimum product count |
-| Sorting | Price ascending, price descending, name A–Z |
+| Sorting | Price ascending, price descending, name A–Z, and inventory preservation |
 | Shopping cart | Add item, badge count, cart visibility, removal |
 | Checkout | Successful order, required first name, required postal code |
 
