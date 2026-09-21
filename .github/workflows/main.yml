@@ -33,9 +33,11 @@ jobs:
 
       - name: Set up Chrome
         if: matrix.browser == 'chrome'
+        id: setup-chrome
         uses: browser-actions/setup-chrome@v2
         with:
           chrome-version: 153.0.8010.52
+          install-chromedriver: true
 
       - name: Set up Firefox
         if: matrix.browser == 'firefox'
@@ -51,7 +53,12 @@ jobs:
           fi
 
       - name: Run test suite
-        run: mvn --batch-mode --no-transfer-progress clean test -Dheadless=true -Dbrowser=${{ matrix.browser }}
+        run: >-
+          mvn --batch-mode --no-transfer-progress clean test
+          -Dheadless=true
+          -Dbrowser=${{ matrix.browser }}
+          -Dchrome.binary="${{ steps.setup-chrome.outputs.chrome-path }}"
+          -Dwebdriver.chrome.driver="${{ steps.setup-chrome.outputs.chromedriver-path }}"
 
       - name: Upload test reports
         if: always()
