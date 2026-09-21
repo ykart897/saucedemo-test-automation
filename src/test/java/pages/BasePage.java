@@ -33,6 +33,10 @@ public class BasePage {
 
     protected void click(WebElement element) {
         WebElement clickableElement = wait.until(ExpectedConditions.elementToBeClickable(element));
+        if ("a".equalsIgnoreCase(clickableElement.getTagName())) {
+            clickableElement.click();
+            return;
+        }
         clickableElement.sendKeys(Keys.ENTER);
     }
 
