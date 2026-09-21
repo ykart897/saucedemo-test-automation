@@ -32,8 +32,15 @@ public final class Driver {
                 }
                 driver = new FirefoxDriver(options);
             } else if ("chrome".equals(browser)) {
-                WebDriverManager.chromedriver().setup();
+                String chromeDriverPath = System.getProperty("webdriver.chrome.driver", "");
+                if (chromeDriverPath.isBlank()) {
+                    WebDriverManager.chromedriver().setup();
+                }
                 ChromeOptions options = new ChromeOptions();
+                String chromeBinary = System.getProperty("chrome.binary", "");
+                if (!chromeBinary.isBlank()) {
+                    options.setBinary(chromeBinary);
+                }
                 if (isHeadlessRun()) {
                     options.addArguments("--headless=new");
                     options.addArguments("--no-sandbox");
