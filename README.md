@@ -13,7 +13,7 @@ A UI test suite is useful only when failures are trustworthy and reproducible. T
 
 - Cross-browser execution on Chrome and Firefox through a GitHub Actions matrix.
 - Explicit waits and centralized browser lifecycle management to reduce flaky behavior.
-- Native WebDriver clicks so overlays and other user-visible interaction problems remain detectable.
+- Native WebDriver keyboard activation so overlays, focus issues, and other user-visible interaction problems remain detectable.
 - Reliable React input synchronization in headless browser environments where direct value entry is required.
 - Failure screenshots embedded directly into Cucumber reports.
 - Traceability from documented requirements to executable Gherkin scenarios.
